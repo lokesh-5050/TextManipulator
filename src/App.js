@@ -1,12 +1,12 @@
 import './App.css';
 import Navbar from './components/Navbar';
+import Textform from './components/Textform';
 
 function App() {
   return (
     <>
-    <Navbar ></Navbar>
-    {/* <Navbar  aboutText="About Us"></Navbar>  */}
-    {/* here default props will be used */}
+    <Navbar title = "LokeshApp" aboutText="About Us" ></Navbar>
+    <Textform heading="Enter texts to analyize"></Textform>
     </>
   );
 } 

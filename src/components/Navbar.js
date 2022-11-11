@@ -35,10 +35,10 @@ Navbar.propTypes = {
     aboutText:PropTypes.string.isRequired
 }
 
-// // Navbar.propTypes = {
-// //     title:PropTypes.string.isRequired,
-// //     aboutText:PropTypes.string.isRequired
-// }
+  Navbar.propTypes = {
+      title:PropTypes.string.isRequired,
+      aboutText:PropTypes.string.isRequired
+ }
 
 
 // Navbar.defaultProps = {
