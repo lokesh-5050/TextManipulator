@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
 export default function Textform(props) {
-  const [text, setText] = useState("Enter texts here");
+  const [text, setText] = useState("");
   const [times , setTime] = useState("Time Now")
-  // const removeWords = () =>{
-  //   let textAreaWords = ""
-  //   setText(textAreaWords)
-  // }
+ 
  
   
   const toUpperCase = () => {
@@ -38,17 +35,17 @@ export default function Textform(props) {
   }
   setInterval(time , 1000)
   return (
-    <div style={{ width: "70%", marginTop: "3vw" }} className="container">
+    <>
+    <div style={{ width: "70%", marginTop: "2vw" }} className="container">
       <div className="mb-3 ">
         <h1>{props.heading}</h1>
-        <div className="time" onLoad={time}>{times}</div>
+        <div className="time mt-2" onLoad={time}>{times}</div>
         <textarea
           className="form-control mt-5"
           id="myBox"
           rows="8"
           value={text}
-          // o  nFocus={removeWords}
-          
+          placeholder={"Enter texts here"}
           onChange={handleChange}
         ></textarea>
         <div style={{ display: "flex", gap: "2vw" }} className="btns">
@@ -65,7 +62,14 @@ export default function Textform(props) {
             Remove All
           </button>
         </div>
+        <div className="conatiner my-4">
+          <h6>{text.replace(/ /g,"").length} Characters & {text.length>0?text.split(' ').length:"0"} Words</h6>
+          <h5>Preview</h5>
+          <p>{text}</p>
+        </div>
+        
       </div>
     </div>
+    </>
   );
 }
