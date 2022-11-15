@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Textform(props) {
   const [text, setText] = useState("");
   const [times , setTime] = useState("Time Now")
- 
- 
+  // const [theme , setTheme ] = useState("light")
+  const [theme , setTheme ] = useState(
+    localStorage.getItem('theme' || 'light')
+  )
+
+  const changeTheme = ()=> {
+    if(theme === 'light'){
+      setTheme('dark')
+    }else{
+      setTheme('light')
+    }
+  };
+  useEffect(() =>{
+    localStorage.setItem('theme' , theme)
+    document.body.className = theme;
+  }, [theme])
   
   const toUpperCase = () => {
     console.log(text);
@@ -34,9 +48,23 @@ export default function Textform(props) {
     setTime(today)
   }
   setInterval(time , 1000)
+
+  const moveToLeft = () =>{
+    let flag = 0
+    if(flag === 0){
+      document.querySelector(".cir").style.transition =  "all cubic-bezier(0.19, 1, 0.22, 1) 1s"
+      document.querySelector(".cir").style.marginLeft = "55px"
+      flag++
+    }else{
+      document.querySelector(".cir").style.transition =  "all cubic-bezier(0.19, 1, 0.22, 1) 1s"
+      document.querySelector(".cir").style.marginLeft = "-55px"
+      flag--
+    }
+  }
+
   return (
     <>
-    <div style={{ width: "70%", marginTop: "2vw" }} className="container">
+    <div style={{ width: "70%", marginTop: "2vw" }} className={`container ${theme}`}>
       <div className="mb-3 ">
         <h1>{props.heading}</h1>
         <div className="time mt-2" onLoad={time}>{times}</div>
@@ -61,13 +89,19 @@ export default function Textform(props) {
           <button className="btn btn-primary mt-4" onClick={removeAll}>
             Remove All
           </button>
+          <button type="button" className="btn btn-primary mt-4" onClick={changeTheme} >{theme}</button>
+          <div  style={{width:"7vw",height:"3vw",backgroundColor:"red",marginTop:"1.5vw"}} className="oval-box">
+              <div style={{width:"3vw",backgroundColor:"blue", height:"inherit" , borderRadius:"50%", display:"flex" , justifyContent:"center", alignItems:"center"}} className="cir" onClick={moveToLeft}>
+                {theme}
+              </div>
+          </div>
+
         </div>
         <div className="conatiner my-4">
           <h6>{text.replace(/ /g,"").length} Characters & {text.length>0?text.split(' ').length:"0"} Words</h6>
           <h5>Preview</h5>
           <p>{text}</p>
         </div>
-        
       </div>
     </div>
     </>

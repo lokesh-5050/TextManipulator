@@ -1,0 +1,18 @@
+.dark {
+    background-color: #333;
+    color: #fff;
+  }
+  .light {
+    background-color: #fff;
+    color: #333;
+  }
+  .oval-box{
+    color: #fff;
+  }
+
+  @media (max-width: 800px) {
+    .btns {
+      flex-direction: column;
+      transition:
+    }
+  }
