@@ -7,12 +7,15 @@ export default function Textform(props) {
   const [theme , setTheme ] = useState(
     localStorage.getItem('theme' || 'light')
   )
+  const [btnText , setBtnText] = useState("Enable Dark Mode")
 
   const changeTheme = ()=> {
     if(theme === 'light'){
       setTheme('dark')
+      setBtnText('Enable Light Mode')
     }else{
       setTheme('light')
+      setBtnText('Enable Dark Mode')
     }
   };
   useEffect(() =>{
@@ -49,18 +52,14 @@ export default function Textform(props) {
   }
   setInterval(time , 1000)
 
-  const moveToLeft = () =>{
-    let flag = 0
-    if(flag === 0){
-      document.querySelector(".cir").style.transition =  "all cubic-bezier(0.19, 1, 0.22, 1) 1s"
-      document.querySelector(".cir").style.marginLeft = "55px"
-      flag++
-    }else{
-      document.querySelector(".cir").style.transition =  "all cubic-bezier(0.19, 1, 0.22, 1) 1s"
-      document.querySelector(".cir").style.marginLeft = "-55px"
-      flag--
-    }
-  }
+  
+
+  const handleRemoveExtraSpaces = () => {
+    let ourValue = document.getElementById("myBox").value;
+    let newtext = ourValue.split(/[ ]+/)
+    setText(newtext.join(" "))
+    
+  };
 
   return (
     <>
@@ -89,12 +88,14 @@ export default function Textform(props) {
           <button className="btn btn-primary mt-4" onClick={removeAll}>
             Remove All
           </button>
-          <button type="button" className="btn btn-primary mt-4" onClick={changeTheme} >{theme}</button>
-          <div  style={{width:"7vw",height:"3vw",backgroundColor:"red",marginTop:"1.5vw"}} className="oval-box">
-              <div style={{width:"3vw",backgroundColor:"blue", height:"inherit" , borderRadius:"50%", display:"flex" , justifyContent:"center", alignItems:"center"}} className="cir" onClick={moveToLeft}>
-                {theme}
-              </div>
-          </div>
+          <button
+              className="btn btn-primary mt-4"
+              onClick={handleRemoveExtraSpaces}
+            >
+              RemoveExtraSpaces
+            </button>
+          <button type="button" className="btn btn-primary mt-4" onClick={changeTheme} >{btnText}</button>
+          
 
         </div>
         <div className="conatiner my-4">
