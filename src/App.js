@@ -10,7 +10,6 @@ function App() {
     <>
     <Navbar title = "LokeshApp" aboutText="About Us" mode={mode} ></Navbar>
     <Textform heading="Enter texts to analyize"></Textform>
-    
     </>
   );
 } 
