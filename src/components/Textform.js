@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 export default function Textform(props) {
   const [text, setText] = useState("");
   const [times , setTime] = useState("Time Now")
   // const [theme , setTheme ] = useState("light")
-  const [theme , setTheme ] = useState(
-    localStorage.getItem('theme' || 'light')
-  )
-  const [btnText , setBtnText] = useState("Enable Dark Mode")
+ 
+  
 
-  const changeTheme = ()=> {
-    if(theme === 'light'){
-      setTheme('dark')
-      setBtnText('Enable Light Mode')
-    }else{
-      setTheme('light')
-      setBtnText('Enable Dark Mode')
-    }
-  };
-  useEffect(() =>{
-    localStorage.setItem('theme' , theme)
-    document.body.className = theme;
-  }, [theme])
+
   
   const toUpperCase = () => {
     console.log(text);
@@ -63,7 +49,7 @@ export default function Textform(props) {
 
   return (
     <>
-    <div style={{ width: "70%", marginTop: "2vw" }} className={`container ${theme} mt-5`}>
+    <div style={{ width: "70%", marginTop: "2vw" , color:props.mode === 'light'?'black':'#fff' }} className={`container mt-5`} >
       <div className="mb-3 ">
         <h1>{props.heading}</h1>
         <div className="time mt-2" onLoad={time}>{times}</div>
@@ -94,7 +80,7 @@ export default function Textform(props) {
             >
               RemoveExtraSpaces
             </button>
-          <button type="button" className="btn btn-primary mt-4" onClick={changeTheme} >{btnText}</button>
+          
           
 
         </div>
