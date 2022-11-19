@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import '../styles/Navbar.css'
 export default function Navbar(props) {
   return (
-    <nav className={`navbar navbar-expand-${props.mode} bg-${props.mode}`} style={{color:props.mode === 'dark'?'white':'#333'}}>
-  <div className="container-fluid">
+    <nav className={`navbar navbar-expand-${props.mode} bg-${props.mode} `} style={{color:props.mode === 'dark'?'white':'#333'}}>
+  <div className="container-fluid d-flex">
     <a className="navbar-brand"  style={{color:props.mode === 'dark'?'white':'#333'}}>{props.title}</a>
+    <div class="form-check form-switch" >
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+  <label class="form-check-label" htmlFor="flexSwitchCheckDefault">DarkMode</label>
+</div>
     <button className="navbar-toggler-text-light"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" ></span>
     </button>

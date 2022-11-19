@@ -63,12 +63,12 @@ export default function Textform(props) {
 
   return (
     <>
-    <div style={{ width: "70%", marginTop: "2vw" }} className={`container ${theme}`}>
+    <div style={{ width: "70%", marginTop: "2vw" }} className={`container ${theme} mt-5`}>
       <div className="mb-3 ">
         <h1>{props.heading}</h1>
         <div className="time mt-2" onLoad={time}>{times}</div>
         <textarea
-          className="form-control mt-5"
+          className="form-control mt-4"
           id="myBox"
           rows="8"
           value={text}
