@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import '../styles/Navbar.css'
+
 export default function Navbar(props) {
   return (
     <nav className={`navbar navbar-expand-${props.mode} bg-${props.mode} align-items-center `} style={{color:props.mode === 'dark'?'white':'#333'}}>
