@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
 
-const Alert = () => {
+const Alert = (props) => {
+    
   return (
-    <div className="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-  <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-  )
-}
+    props.alert && (
+      <div
+        className={`alert alert-${props.alert.type} alert-dismissible fade show`}
+        role="alert"
+      >
+        <strong>{props.alert.msg}</strong>
+      </div>
+    )
+  );
+};
 
-export default Alert
+export default Alert;
