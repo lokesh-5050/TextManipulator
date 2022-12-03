@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function Textform(props) {
+  const { handleAlert, hideAlert } = props;
   const [text, setText] = useState("");
   const [times, setTime] = useState("Time Now");
   // const [theme , setTheme ] = useState("light")
@@ -8,10 +9,14 @@ export default function Textform(props) {
   const toUpperCase = () => {
     console.log(text);
     setText(text.toUpperCase());
+    handleAlert("Converted to upperCase Successfully!", "success");
+    hideAlert();
   };
   const toLowerCase = () => {
     console.log(text);
     setText(text.toLowerCase());
+    handleAlert("Converted to lowerCase Successfully!", "success");
+    hideAlert();
   };
   const copyToClip = (e) => {
     console.log(e);
@@ -19,6 +24,8 @@ export default function Textform(props) {
     let copyAllText = e.target.parentElement.parentElement.children[2].value;
     console.log(copyAllText);
     navigator.clipboard.writeText(copyAllText);
+    handleAlert("Copied to clipboard Successfully!", "success");
+    hideAlert();
   };
   const handleChange = (e) => {
     // console.log(e.target.value);
@@ -27,6 +34,8 @@ export default function Textform(props) {
   };
   const removeAll = () => {
     setText("");
+    handleAlert("Empty Input Successfully!", "success");
+    hideAlert();
   };
   const time = () => {
     let today = new Date().toLocaleTimeString();
@@ -38,6 +47,8 @@ export default function Textform(props) {
     let ourValue = document.getElementById("myBox").value;
     let newtext = ourValue.split(/[ ]+/);
     setText(newtext.join(" "));
+    handleAlert("Removed extra spaces Successfully!", "success");
+    hideAlert();
   };
 
   return (
@@ -55,7 +66,6 @@ export default function Textform(props) {
           <div className="time mt-2" onLoad={time}>
             {times}
           </div>
-          
 
           <textarea
             className="form-control mt-4"
