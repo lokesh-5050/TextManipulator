@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Textform(props) {
   const { handleAlert, hideAlert, mode } = props;
@@ -129,6 +130,7 @@ export default function Textform(props) {
             >
               RemoveExtraSpaces
             </button>
+            <Link className="btn btn-primary mt-4" to="/nav">hey</Link>
           </div>
           <div className="conatiner my-4">
             <h6>

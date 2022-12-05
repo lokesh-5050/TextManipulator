@@ -4,6 +4,13 @@ import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import Textform from "./components/Textform";
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 function App() {
   const [mode, setMode] = useState("#fff");
   const [alert, setAlert] = useState(null);
@@ -21,19 +28,7 @@ function App() {
     });
   };
 
-  // const toogleDarkMode = () => {
-  //   if (mode === "light") {
-  //     setMode("dark");
-  //     document.body.style.backgroundColor = "#333";
-  //     handleAlert("Dark Mode Activated!", "success");
-  //     hideAlert();
-  //   } else if (mode === "dark") {
-  //     setMode("light");
-  //     document.body.style.backgroundColor = "white";
-  //     handleAlert("Light Mode Activated!", "success");
-  //     hideAlert();
-  //   }
-  // };
+ 
   const hideAlert = () => {
     setTimeout(() => {
       setAlert("");
@@ -41,16 +36,14 @@ function App() {
   };
   return (
     <>
-      <Navbar
-        title="LokeshApp"
-        aboutText="About Us"
-        mode={mode}
-        // toogleDarkMode={toogleDarkMode}
-        handleThemes={handleThemes}
-      />
-      <Alert alert={alert} />
-      <Textform heading="Enter texts to analyize" handleAlert={handleAlert} mode={mode} hideAlert={hideAlert} />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={ <Textform/>}></Route>
+          <Route exact path="/nav" element={<Navbar/>}></Route>
+        </Routes>
+      </Router>
     </>
+
   );
 }
 
