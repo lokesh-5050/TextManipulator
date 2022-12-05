@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 export default function Textform(props) {
-  const { handleAlert, hideAlert } = props;
+  const { handleAlert, hideAlert, mode } = props;
   const [text, setText] = useState("");
   const [times, setTime] = useState("Time Now");
   // const [theme , setTheme ] = useState("light")
+
 
   const toUpperCase = () => {
     console.log(text);
@@ -21,7 +22,8 @@ export default function Textform(props) {
   const copyToClip = (e) => {
     console.log(e);
     // console.log(e.target.parentElement.parentElement.children[1].defaultValue)
-    let copyAllText = e.target.parentElement.parentElement.children[2].value;
+    // let copyAllText = e.target.parentElement.parentElement.children[2].value;
+    let copyAllText = text
     console.log(copyAllText);
     navigator.clipboard.writeText(copyAllText);
     handleAlert("Copied to clipboard Successfully!", "success");
@@ -61,7 +63,7 @@ export default function Textform(props) {
         }}
         className={`container mt-5`}
       >
-        <div className="mb-3 ">
+        <div className="mb-3 " style={{color:mode === '#fff' ? 'black' : '#fff'}}>
           <h1>{props.heading}</h1>
           <div className="time mt-2" onLoad={time}>
             {times}
@@ -75,22 +77,55 @@ export default function Textform(props) {
             placeholder={"Enter texts here"}
             onChange={handleChange}
           ></textarea>
-          <div style={{ display: "flex", gap: "2vw" }} className="btns">
-            <button className="btn btn-primary mt-4" onClick={toUpperCase}>
+          <div
+            style={{ display: "flex", gap: "2vw" }}
+            className="btns">
+
+            <button className="btn btn-primary mt-4 "
+              style={{
+                backgroundColor: mode === "#5e0c0c" ? '#760606' : 
+                  mode === '#050544' ? '#04045f' : 
+                  mode === '#053a05' ? '#055a05' : mode === '#333' ? '#4d4d4d':mode === '#fff' ? '#0D6EFD':'',
+                outline: "none", border: "none"
+              }}
+              onClick={toUpperCase}>
               Convert To UpperCase
             </button>
-            <button className="btn btn-primary mt-4" onClick={toLowerCase}>
+            <button className="btn btn-primary mt-4" style={{
+              backgroundColor: mode === "#5e0c0c" ? '#760606' :
+                mode === '#050544' ? '#04045f' :
+                  mode === '#053a05' ? '#055a05' : mode === '#333' ? '#4d4d4d':mode === '#fff',
+              outline: "none", border: "none"
+            }} onClick={toLowerCase}>
               Convert To lowerCase
             </button>
-            <button className="btn btn-primary mt-4" onClick={copyToClip}>
+            <button className="btn btn-primary mt-4" style={{
+              backgroundColor: mode === "#5e0c0c" ? '#760606' :
+                mode === '#050544' ? '#04045f' : 
+                  mode === '#053a05' ? '#055a05' : mode === '#333' ? '#4d4d4d':mode === '#fff',
+              outline: "none", border: "none"
+            }} onClick={copyToClip}>
               Copy All Text
             </button>
-            <button className="btn btn-primary mt-4" onClick={removeAll}>
+            <button className="btn btn-primary mt-4" 
+            style={{
+              backgroundColor: mode === "#5e0c0c" ? '#760606' : 
+                mode === '#050544' ? '#04045f' : 
+                  mode === '#053a05' ? '#055a05' : mode === '#333' ? '#4d4d4d':mode === '#fff',
+              outline: "none", border: "none"
+            }}
+             onClick={removeAll}>
               Remove All
             </button>
             <button
               className="btn btn-primary mt-4"
-              onClick={handleRemoveExtraSpaces}
+              onClick={handleRemoveExtraSpaces} 
+              style={{
+              backgroundColor: mode === "#5e0c0c" ? '#760606' : 
+                mode === '#050544' ? '#04045f' : 
+                  mode === '#053a05' ? '#055a05' : mode === '#333' ? '#4d4d4d':mode === '#fff',
+              outline: "none", border: "none"
+            }}
             >
               RemoveExtraSpaces
             </button>
