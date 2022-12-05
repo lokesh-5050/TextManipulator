@@ -6,6 +6,7 @@ export default function Textform(props) {
   const [times, setTime] = useState("Time Now");
   // const [theme , setTheme ] = useState("light")
 
+
   const toUpperCase = () => {
     console.log(text);
     setText(text.toUpperCase());
@@ -21,7 +22,8 @@ export default function Textform(props) {
   const copyToClip = (e) => {
     console.log(e);
     // console.log(e.target.parentElement.parentElement.children[1].defaultValue)
-    let copyAllText = e.target.parentElement.parentElement.children[2].value;
+    // let copyAllText = e.target.parentElement.parentElement.children[2].value;
+    let copyAllText = text
     console.log(copyAllText);
     navigator.clipboard.writeText(copyAllText);
     handleAlert("Copied to clipboard Successfully!", "success");
